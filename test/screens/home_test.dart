@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:poc/models/favorites.dart';
+import 'package:poc/screens/home.dart';
+import 'package:provider/provider.dart';
+
+// Ambos os códigos abaixo são equivalentes
+
+// Widget createHomeScreen() => ChangeNotifierProvider<Favorites>(
+//     create: (context) => Favorites(), child: MaterialApp(home: HomePage()));
+
+Widget createHomeScreen() {
+  return ChangeNotifierProvider<Favorites>(
+    create: (context) => Favorites(),
+    child: MaterialApp(
+      home: HomePage(),
+    )
+  );
+}
+
+void main() {
+  group('Home page widget tests', () {
+    testWidgets('Testing scrolling', (tester) async {
+      await tester.pumpWidget(createHomeScreen());
+      expect(find.text('Item 0'), findsOneWidget);
+      await tester.fling(find.byType(ListView), Offset(0, -200), 3000);
+      await tester.pumpAndSettle();
+      expect(find.text('Item 0'), findsNothing);
+    });
+
+    testWidgets('Testing if ListView is visible', (tester) async {
+      await tester.pumpWidget(createHomeScreen());
+      expect(find.byType(ListView), findsOneWidget);
+    });
+
+    testWidgets('Testing IconButtons change on tap', (tester) async {
+      await tester.pumpWidget(createHomeScreen());
+      expect(find.byIcon(Icons.favorite), findsNothing);
+      await tester.tap(find.byIcon(Icons.favorite_border).first);
+      await tester.pumpAndSettle(Duration(seconds: 10));
+      expect(find.text('Added to favorites.'), findsOneWidget);
+      expect(find.byIcon(Icons.favorite), findsWidgets);
+      await tester.tap(find.byIcon(Icons.favorite).first);
+      await tester.pumpAndSettle(Duration(seconds: 10));
+      expect(find.text('Removed from favorites.'), findsOneWidget);
+      expect(find.byIcon(Icons.favorite), findsNothing);
+    });
+  });
+}
