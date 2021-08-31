@@ -1,16 +1,15 @@
-# poc
+# Flutter POC
+This project is was created as a playground for experimentation in a Flutter/Dart environment, using [this tutorial](https://codelabs.developers.google.com/codelabs/flutter-app-testing#0) as reference. The topics covered by this repo are:
 
-A new Flutter project.
+* Tests
+    * Unit tests
+    * Widget tests
+    * Integration tests
+* State management
+    * Bloc vs Redux
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## How to get the project running
+1. Clone this repo by typing ```git clone https://github.com/munaretto/flutter-poc.git``` or ```git clone git@github.com:munaretto/flutter-poc.git``` on your terminal and pressing enter
+2. If necessary, download project dependencies with ```flutter pub get``` being at the project root
+3. Run the project using your IDE or by typing ```flutter run```.
+4. For running both unit and widget tests, use the command ```flutter test```. For integration tests, use ```flutter drive --driver integration_test/driver.dart --target integration_test/app_test.dart```
