@@ -1,5 +1,5 @@
 # Flutter POC
-This project is was created as a playground for experimentation in a Flutter/Dart environment, using [this tutorial](https://codelabs.developers.google.com/codelabs/flutter-app-testing#0) as reference. The topics covered by this repo are:
+This project was created as a playground for experimentation in a Flutter/Dart environment, using [this tutorial](https://codelabs.developers.google.com/codelabs/flutter-app-testing#0) as reference. The topics covered by this repo are:
 
 * Tests
     * Unit tests
